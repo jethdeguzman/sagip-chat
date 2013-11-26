@@ -1,0 +1,42 @@
+<div class="report">
+</div>
+
+
+
+ <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="/js/socket.io.js"></script>
+
+
+
+  
+
+
+
+
+  
+<script>
+
+	
+	jQuery(function($){
+	
+  
+		$("#btn").on("click", function(e){
+		e.preventDefault();
+			$.ajax({
+				url : "/foo",
+				type : "get",
+				data : { 
+					name : 'jethro'
+					}
+			});
+			
+		});	
+		socket.on('report', function(response){
+			$(".report").append("name: "+response.name+"<br/>"+"age: "+response.age+"<br/>"+"mobile: "+response.mobile+"<br/>"+"unit: "+response.unit+"<br/>"+"lat: "+response.lat+"<br/>"+"lng: "+response.lng+"<br/>"+"address: "+response.address+"<br/><hr>");
+		});
+		socket.on('new message', function(data){
+			console.log(data);
+		});
+	});
+	
+</script>
